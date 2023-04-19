@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->double('precio');
             $table->string('nombre');
-            $table->tinyInteger('Disponibilidad');
+            $table->boolean('Disponibilidad');
             $table->timestamps();
         });
     }
