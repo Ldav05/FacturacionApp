@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\Disponibilidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
@@ -25,3 +26,11 @@ Route::group([
     //Route::post('Ventas',  [AuthController::class, 'Ventas']);
 });
 Route::post('/Ventas', [ApiController::class, 'create']);
+Route::post('/Disponibilidad', [ApiController::class, 'Disponibilidad']);
+//Route::get('Disponibilidad',function ($id){
+  //  return Disponibilidad::find($id);
+//}); 
+
+
+    
+
