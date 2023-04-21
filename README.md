@@ -77,8 +77,11 @@ DB_PASSWORD=
 ```bash
 php artisan migrate
 ```
-
- 11.  Por ultimo ejecutamos nuestro proyecto:
+11. Ahora migramos los datos hehcos por el seeder
+```bash
+php artisan migrate:fresh --seed
+```
+ 12.  Por ultimo ejecutamos nuestro proyecto:
  ```bash
 php artisan serve
 ```
@@ -108,7 +111,60 @@ Ejemplo:
 ```
 * Adicionalmente se puede realizar un logout en  [http://localhost:8000/api/auth/logout], con el token generado en el login.
 
+*Si no deseamos cerrar sesión si no agregar un Usuario, Rol, Productos, Permisos, Clientes. Se pueden crear de la siguiente forma en postman.
+```json
+{
+ USUARIO
+   RUTA= [http://localhost:8000/api/Usuarios]
+  {
+    "nombre":"Kenneth",
+    "email":"Kenneth@gmail.com",
+    "pasword":12345,
+    "cargo":"Cajero",
+    "rolid":1,
+    "cedula":102444
+  }
+   
+  ROL
+  RUTA= [http://localhost:8000/api/Rol]
+  {
+  "nombre":"Admin"
+  }
+  
+  PRODUCTOS
+  Tener en cuenta: "Disponibilidad puede tener el valor de 0 o 1 Siendo 1 Disponible y 0 no disponible"
+  RUTA= [http://localhost:8000/api/Productos]
+  {
+    "precio":"40000",
+    "nombre":"Fabuloso",
+    "Disponibilidad":"1"
+  }
+  
+  PERMISOS
+  RUTA= [http://localhost:8000/api/Permiso]
+  {
+   "nombre":"Kenneth",
+   "Descripcion":"Trabajador"
+  }
+  
+  CLIENTES
+   RUTA= [http://localhost:8000/api/Clientes]
+  {
+    "nombre":"Kanneth",
+    "email":"Kanneth@gmail",
+    "telefono":"302410",
+    "apellido":"Merino"
+   }
+}
+```
 
+
+*Disponibilidad de productos RUTA= [http://localhost:8000/api/ProductosDisponibles], nota:productos disponibles:1 y no disponibles:0
+```json
+{
+   "Disponibilidad":1
+}
+```
 ------------
 
 
