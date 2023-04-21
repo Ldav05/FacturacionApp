@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Ventas;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -68,4 +69,6 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+
+
 }
