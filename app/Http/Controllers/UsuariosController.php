@@ -39,7 +39,7 @@ class UsuariosController extends Controller
         
          $credentials = $request->only('email', 'pasword');
          $user = User::where('email',$credentials['email'])->first();       
-            $remember = ($request->has('remeber') ? true : false);
+        //$remember = ($request->has('remeber') ? true : false);
        // echo '<pre>';
        // print_r($credentials);
        // echo password_hash($credentials['pasword'], PASSWORD_DEFAULT);
