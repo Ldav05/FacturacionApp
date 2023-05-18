@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permiso;
+use App\Models\Productos;
 use App\Models\User;
 //use App\Models\usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
@@ -37,8 +39,9 @@ class UsuariosController extends Controller
 
     public function login(Request $request){
         
-         $credentials = $request->only('email', 'pasword');
-         $user = User::where('email',$credentials['email'])->first();       
+         $credentials = $request->only('email', 'pasword','rolid');
+         $user = User::where('email',$credentials['email'])->first();  
+
         //$remember = ($request->has('remeber') ? true : false);
        // echo '<pre>';
        // print_r($credentials);
@@ -47,10 +50,13 @@ class UsuariosController extends Controller
         //echo '</pre>';
         //return ($user);
         if($user){
-            if(password_verify($credentials['pasword'], $user->pasword)){
-                return redirect('inicio');
+            if(password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 1)){
+                //$datos = Productos::paginate(5);
+                return redirect('homeadmin');//->with('datos', $datos);
             }else{
-               return redirect('login');
+               //return view('home');
+              //$datos = Productos::where('Disponibilidad',1)->paginate(5);
+              return redirect('home');
             }
         }else{
             return redirect('login')->with('Verifique Su usuario o Contraseña');
@@ -73,6 +79,8 @@ class UsuariosController extends Controller
 
         return redirect(route('login'));
     }
+
+    
     
 }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientesController extends Controller
 {
@@ -17,5 +18,9 @@ class ClientesController extends Controller
  
         $Cliente->save();
         return response()->json($Cliente);
+     }
+     public function Tablaclientes(){
+        $datos=DB::select("select * from ");
+
      }
 }
