@@ -26,6 +26,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     @forelse($datos as $item)
                                         <tr scope="row">
                                             <td>{{ $item->id }}</td>
@@ -39,7 +40,13 @@
                                     @endforelse
                                 </tbody>
                           </table>    
-                          
+                          <tfoot>
+                            <div>
+                                @if($datos->count())
+                                    {{$datos->links()}}
+                                    @endif
+                              </div>
+                        </tfoot>
                           <div>
                             <a href=""><button type="submit" class="btn btn-primary">
                                 Generar Venta

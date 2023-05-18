@@ -24,7 +24,8 @@ Route::view('/registro',"register")->name('registro');
 ////////////////////////////////////////////////
 
 Route::get('/home',[ProductoController::class,'Tablaproducto'])->name('home');
-Route::get('/homeadmin',[ProductoController::class,'Tablaproducto'])->name('homeadmin');
+Route::get('/homeadmin',[ProductoController::class,'Tablaproductoadmin'])->name('homeadmin');
+
 Route::post('/validar-registro', [UsuariosController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [UsuariosController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [UsuariosController::class, 'logout'])->name('logout');

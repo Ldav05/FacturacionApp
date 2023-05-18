@@ -66,13 +66,10 @@
                                 </tr>
                             @endforelse
                             </tbody>
-                            <tfoot>
-                                
-                            </tfoot>
                           </table>
                           <div>
                             @if($datos->count())
-                                {{$datos->links() }}
+                            {{$datos->links()}}
                                 @endif
                             </div>       
                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
@@ -87,7 +84,7 @@
                                 <div class="modal-body">
                                     <form>
                                         <div class="mb-3">
-                                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                          <label for="exampleInputEmail1" class="form-label">Nombre</label>
                                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                                         </div>
@@ -100,17 +97,23 @@
                                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                                          </div>
                                       </form>
                                 </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                                  <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                                </div>
+                                
                               </div>
                             </div>
                           </div>
+                          <div>
+                            <a href="{{route('login')}}"><button type="submit" class="btn btn-warning">
+                                Salir
+                            </button></a>
+                        </div>
                     </div>
-                
+                    
                 </div>
             </div>
         </div>

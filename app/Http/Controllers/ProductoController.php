@@ -25,16 +25,14 @@ class ProductoController extends Controller
      public function Tablaproducto(){
        // $datos = Productos::all(); 
         //$datos = DB::select('SELECT * FROM producto WHERE Disponibilidad = 1');
-        $data = User::where('rolid',1);
-        if($data){
-            if($data){
-                $datos = Productos::where('Disponibilidad',1)->paginate(5);
-                return redirect('homeadmin')->with('datos', $datos);
-            }else{
-
-            }
-            $datos = Productos::paginate(5);
-            return view('home')->with('datos', $datos);
+            $datos = Productos::paginate(3);
+            return view('home')->with('datos', $datos);    
         }
+    
+     
+
+     public function  Tablaproductoadmin(){
+        $datos = Productos::where('Disponibilidad',1)->paginate(3);
+        return view('homeadmin')->with('datos', $datos);
      }
 }
