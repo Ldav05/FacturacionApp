@@ -19,8 +19,8 @@ class ClientesController extends Controller
         $Cliente->save();
         return response()->json($Cliente);
      }
-     public function Tablaclientes(){
-        $datos=DB::select("select * from ");
-
+     public function Tablacliente(){ 
+        $datos = Clientes::paginate(4);
+        return view('clientes')->with('datos', $datos);
      }
 }

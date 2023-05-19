@@ -38,7 +38,6 @@ class UsuariosController extends Controller
     }
 
     public function login(Request $request){
-        
          $credentials = $request->only('email', 'pasword','rolid');
          $user = User::where('email',$credentials['email'])->first();  
 
