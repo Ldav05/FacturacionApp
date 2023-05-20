@@ -22,29 +22,33 @@ class ProductoController extends Controller
         return response()->json($Producto);
      }
 
-     public function Tablaproducto(){
+     public function Tablaproductotodos(){
        // $datos = Productos::all(); 
         //$datos = DB::select('SELECT * FROM producto WHERE Disponibilidad = 1');
             $datos = Productos::paginate(4);
-            return view('home')->with('datos', $datos);    
+            return view('homeadmin')->with('datos', $datos);    
         }
     
      
 
-     public function  Tablaproductoadmin(){
+     public function  Tablaproductodisponible(){
         $datos = Productos::where('Disponibilidad',1)->paginate(4);
-        return view('homeadmin')->with('datos', $datos)->with("<script>alert('Inicio de sesion correcto');</script>");
+        return view('home')->with('datos', $datos);
      }
 
      public function Crearproductos(Request $request){
         $producto = new Productos();
         //$producto->id = $request->idRp;
-        $producto->nombre  = $request->nombreRp;
-        $producto->precio = $request->emailRp;
-        $producto->Disponibilidad = $request->cargoRp;  
+        $producto->nombre  = $request->nombre;
+        $producto->precio = $request->precio;
+        if($request->Disponibilidad == 'Disponible'){
+            $producto->Disponibilidad = 1;
+        }else{
+            $producto->Disponibilidad = 0;
+        }
+        //$producto->Disponibilidad = $request->cargoRp;  
         $producto->save();
-        echo '<pre>';
-        print_r($producto);
-        echo '<pre>';
+        return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
+        
      }
 }

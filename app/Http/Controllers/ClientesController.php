@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ClientesController extends Controller
 {
-    public function CrearClientes(Request $request){
+    public function CrearCliente(Request $request){
         $Cliente = new Clientes();
  
         $Cliente->nombre = $request->input('nombre');
@@ -22,5 +22,18 @@ class ClientesController extends Controller
      public function Tablacliente(){ 
         $datos = Clientes::paginate(4);
         return view('clientes')->with('datos', $datos);
+     }
+
+     public function Crearclientes(Request $request){
+        $cliente = new Clientes();
+        //$producto->id = $request->idRp;
+        $cliente->nombre  = $request->nombre;
+        $cliente->apellido = $request->apellido;
+        $cliente->email = $request->email;
+        $cliente->telefono = $request->telefono;
+        //$producto->Disponibilidad = $request->cargoRp;  
+        $cliente->save();
+        return redirect('clientes')->with('mensaje','¡Se agrego correctamente el Cliente!');
+        
      }
 }

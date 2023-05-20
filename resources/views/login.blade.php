@@ -24,7 +24,11 @@
     <title>FacturaNet Login</title>
 </head>
 <body>
-
+    @if(session('mensaje'))
+    <div class="alert alert-success">
+        {{ session('mensaje') }}
+    </div>
+    @endif
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{route('login')}}">FacturaNet</a>
@@ -73,7 +77,7 @@
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="remember"> Remember Me
+                                            <input type="checkbox" name="remember"> Recuerdame
                                         </label>
                                     </div>
                                 </div>

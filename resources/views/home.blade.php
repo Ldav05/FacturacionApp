@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -12,6 +11,11 @@
     <title>Inicio</title>
 </head>
 <body>
+    @if(session('mensaje'))
+    <div class="alert alert-success">
+        {{ session('mensaje') }}
+    </div>
+    @endif
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand">FacturaNet</a>
@@ -29,7 +33,7 @@
             </div>
         </div>
     </nav>
-    <div class="cotainer mt-5" >
+    <div class="cotainer mt-3" >
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

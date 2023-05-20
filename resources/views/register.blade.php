@@ -82,9 +82,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="rolid" class="col-md-4 col-form-label text-md-right">Rol id</label>
+                                <label for="cargo" class="col-md-4 col-form-label text-md-right">Rol</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="rolid" class="form-control" name="rolid"  >
+                                    <select class="form-control" name="rolid">
+                                        <option value="1">Admin</option>
+                                        <option value="2">Trabajador</option>
+                                      </select>
                                 </div>
                             </div>
 

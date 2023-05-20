@@ -20,6 +20,11 @@
     <title>FacturaNet Admin</title>
 </head>
 <body>
+    @if(session('mensaje'))
+    <div class="alert alert-success">
+        {{ session('mensaje') }}
+    </div>
+    @endif
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand">FacturaNet</a>
@@ -46,7 +51,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Lista de Productos</div>
+                    <div class="card-header">Tabla de Productos</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -112,8 +117,8 @@
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Seleciona la Disponibilidad</label>
                                                 <select class="form-control" id="Disponibilidad" name="DisponibilidadEP">
-                                                  <option>Disponible</option>
-                                                  <option>No Disponible</option>
+                                                  <option value="1">Disponible</option>
+                                                  <option value="2">No Disponible</option>
                                                 </select>
                                               </div>
                                             <div class="modal-footer">
@@ -129,42 +134,13 @@
                     </div> 
                     
                     <!-- Model Para registro de productos -->
-                    
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Registro de Producto</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" action="{{route('registrar-producto')}}">
-                                    @csrf
-                                    <div class="mb-3">
-                                      <label  class="form-label">Nombre</label>
-                                      <input type="text" class="form-control" id="nombre"  name="nombreRp">
-                                    </div>
-                                    <div class="mb-3">
-                                      <label class="form-label">Precio</label>
-                                      <input type="text" class="form-control" id="precio" name="precioRp">
-                                    </div>
-                                    <div class="form-group">
-                                        <label >Ingrese la Disponibilidad</label>
-                                        <input type="text" class="form-control" id="Disponibilidad" name="DisponibilidadRp">
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Registrar</button>
-                                      </div>  
-                                  </form>
-                            </div>
-                            
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div class="mx-auto my-3" style="width: 200px;">
-                        <button type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-primary "><i class="fa-solid fa-pen-to-square">Añadir Producto</button>
+                    <div class="mx-auto my-3" style="width: 200px;">
+                        <a href="{{route('registrarproducto')}}"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
+                            Registrar Producto
+                        </i></button></a>
+                   
                     </div>
+                    
                     </div>
                     
                 </div>

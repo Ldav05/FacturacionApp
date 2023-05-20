@@ -19,26 +19,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/login','login')->name('login');
 Route::view('/registro',"register")->name('registro');
+Route::view('/registroproducto',"registrarproducto")->name('registrarproducto');
+Route::view('/registrocliente',"registrarcliente")->name('registrarcliente');
 //Route::view('/clientes',"clientes")->name('clientes');
 //Route::view('/home',"home")->name('home');
 //Route::view('/home-admin',"homeadmin")->name('home-admin');
 
 //////////////////////////////////////////////// Rutas para cargar productos
 
-Route::get('/home',[ProductoController::class,'Tablaproducto'])->name('home');
-Route::get('/homeadmin',[ProductoController::class,'Tablaproductoadmin'])->name('homeadmin');
+Route::get('/homeadmin',[ProductoController::class,'Tablaproductotodos'])->name('homeadmin');
+Route::get('/home',[ProductoController::class,'Tablaproductodisponible'])->name('home');
 
-//////////////////////////////////////////////// Rutas para crear productos
+//////////////////////////////////////////////// Rutas para crear productos y Clientes
 
 Route::post('/registrar-producto',[ProductoController::class,'Crearproductos'])->name('registrar-producto');
-
+Route::post('/registrar-cliente',[ClientesController::class,'Crearclientes'])->name('registrar-cliente');
 //////////////////////////////////////////////// Rutas para validar registros y iniciar sesion
 
 Route::post('/validar-registro', [UsuariosController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [UsuariosController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [UsuariosController::class, 'logout'])->name('logout');
 
-/////////////////////////////////////////////// Clientes
+/////////////////////////////////////////////// tabla clientes
 
 Route::get('/clientes',[ClientesController::class,'Tablacliente'])->name('clientes');
 //Route::post('/',[ProductoController::class,'Tablaproducto'])->name('productos');

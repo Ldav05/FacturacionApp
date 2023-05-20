@@ -11,6 +11,11 @@
     <title>Inicio</title>
 </head>
 <body>
+    @if(session('mensaje'))
+    <div class="alert alert-success">
+        {{ session('mensaje') }}
+    </div>
+    @endif
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand fs-">FacturaNet</a>
@@ -78,14 +83,16 @@
                                     @endif
                               </div>
                         </tfoot>
-                          <div class="mx-auto my-3" style="width: 150px;">
-                            <button type="button" data-toggle="modal" data-target="#exampleModal2" class="btn btn-primary"><i class="fa-solid fa-trash">
-                                Añadir Cliente
-                            </i></button> 
+                        <div class="mx-auto my-3" style="width: 200px;">
+                            <a href="{{route('registrarcliente')}}"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
+                                Registrar Cliente
+                            </i></button></a>
                         </div>
-                        </div>
+                        
                     </div>
+                    
                 </div>
+                
 
                 <!-- Modelo para editar CLientes -->
 
@@ -123,49 +130,13 @@
                               </form>
                         </div> 
                       </div>
+                      
                     </div>
+                    
                   </div>
             </div>
-
-            <!-- Modelo para Añadir Clientes -->
-
-            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Añadir Cliente</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                              <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                              <input type="text" class="form-control" id="nombre"  name="nombreAc">
-                            </div>
-                            <div class="mb-3">
-                              <label for="exampleInputPassword1" class="form-label">Apellido</label>
-                              <input type="text" class="form-control" id="apellido" name="apellidoAc">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="emailAc">
-                              </div>
-                              <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Telefono</label>
-                                <input type="text" class="form-control" id="telefono" name="telefonoAc">
-                              </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-trash">Salir</i></button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa-solid fa-trash"></i>Modificar</button>
-                              </div>
-                          </form>
-                    </div> 
-                  </div>
-                </div>
-              </div>
-              
+            
+            <!-- Modelo para Añadir Clientes --> 
         </div>
     </div>
     </div>
