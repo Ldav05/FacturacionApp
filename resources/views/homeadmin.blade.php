@@ -64,28 +64,66 @@
                               </tr>
                             </thead>
                             <tbody>
-                                @forelse($datos as $item)
+                                @foreach ($datos as $item)
                                 <tr scope="row">
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->nombre }}</td>
                                     <td>${{ $item->precio }}</td>
-                                    @if ($item->Disponibilidad >= 1)
+                                    @if ($item->Disponibilidad == 1)
                                     <td>Disponible</td>
                                     @endif
                                     @if ($item->Disponibilidad  == 0)
                                     <td>No Disponible</td>
                                     @endif
                                     <td>
-                                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square">Editar</i></button>
-                                        <button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash">Eliminar</i></button>
+                                        <button type="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square">Editar</i></button>
+                                        <a href="{{route("eliminar-producto","$item->id")}}" onclick='return confirm ("¿Estas seguro de eliminar producto?")' class="btn btn-danger btn-sm"><i class="fa-solid fa-trash">Eliminar</i></a>
                                     </td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3">No hay datos disponibles.</td>
-                                </tr
-                            @endforelse
-                            </tbody>
+                                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="{{route('editar-producto')}}">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Id Producto</label>
+                                                    <input type="text" class="form-control" id="id"  name="id" value="{{ $item->id }}" readonly>
+                                                  </div>
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                                  <input type="text" class="form-control" id="nombre"  name="nombre" value="{{ $item->nombre }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="exampleInputPassword1" class="form-label">Precio</label>
+                                                  <input type="text" class="form-control" id="precio" name="precio" value="{{ $item->precio }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Disponibilidad</label>
+                                                    <input type="text" class="form-control" id="Disponibilidad" name="Disponibilidad" 
+                                                    @if($item->Disponibilidad == 1)
+                                                    value="Disponible"
+                                                    @else
+                                                    value="No Disponible"
+                                                    @endif
+                                                    >
+                                                  </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Modificar</i></button>
+                                                  </div>
+                                              </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                @endforeach
+                                </tbody>
                           </table>
                           <div>
                             @if($datos->count())
@@ -94,50 +132,14 @@
                             </div>  
                             
                             <!-- Model Para editar de productos -->
-                            
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                              <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                              <input type="email" class="form-control" id="nombre"  name="nombreEP">
-                                            </div>
-                                            <div class="mb-3">
-                                              <label for="exampleInputPassword1" class="form-label">Precio</label>
-                                              <input type="text" class="form-control" id="precio" name="precioEP">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Seleciona la Disponibilidad</label>
-                                                <select class="form-control" id="Disponibilidad" name="DisponibilidadEP">
-                                                  <option value="1">Disponible</option>
-                                                  <option value="2">No Disponible</option>
-                                                </select>
-                                              </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-trash">Salir</i></button>
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa-solid fa-trash">Modificar</i></button>
-                                              </div>
-                                          </form>
-                                    </div>
-                                    
-                                  </div>
-                                </div>
-                              </div>
+                            <div class="mx-auto my-4" style="width: 200px;">
+                                <a href="{{route('registrarproducto')}}"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
+                                    Registrar nuevo Producto
+                                </i></button></a>
                     </div> 
                     
                     <!-- Model Para registro de productos -->
-                    <div class="mx-auto my-3" style="width: 200px;">
-                        <a href="{{route('registrarproducto')}}"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
-                            Registrar Producto
-                        </i></button></a>
+                    
                    
                     </div>
                     

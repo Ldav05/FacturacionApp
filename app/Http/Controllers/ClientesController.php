@@ -36,4 +36,33 @@ class ClientesController extends Controller
         return redirect('clientes')->with('mensaje','¡Se agrego correctamente el Cliente!');
         
      }
+
+     public function Updatecliente(Request $request){
+      $producto = new Clientes();
+       //$producto->id = $request->id;
+       $producto->nombre  = $request->nombre;
+       $producto->apellido = $request->apellido;
+       $producto->email = $request->email;
+       $producto->telefono = $request->telefono;
+       
+       //$producto->Disponibilidad = $request->cargoRp;  
+       $producto->save();
+       return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
+       
+       
+    }
+
+    public function Deletecliente($id){
+       try {
+           $sql = DB::delete("DELETE from cliente WHERE id = $id");
+       } catch (\Throwable $th) {
+           $sql = 0;
+       }
+       if($sql == true){
+           return back()->with('mensaje','Registro eliminado con exito');
+       }else{
+           return back()->with('mensaje','Error al eliminar');
+       }
+      
+    }
 }

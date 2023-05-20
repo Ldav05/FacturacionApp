@@ -57,7 +57,7 @@
                                 </thead>
                                 <tbody>
                                     
-                                    @forelse($datos as $item)
+                                    @foreach($datos as $item)
                                         <tr scope="row">
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nombre }}</td>
@@ -65,15 +65,53 @@
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->telefono }}</td>
                                             <td>
-                                                <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square">Editar</i></button>
-                                                <button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash">Eliminar</i></button>
+                                                <button type="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square">Editar</i></button>
+                                                <a href="{{route("eliminar-cliente","$item->id")}}" onclick='return confirm ("¿Estas seguro de eliminar cliente?")' class="btn btn-danger btn-sm"><i class="fa-solid fa-trash">Eliminar</i></a>
                                             </td>
                                         </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="3">No hay datos disponibles.</td>
-                                        </tr>
-                                    @endforelse
+                                        
+                                        <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST" action="">
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Id Cliente</label>
+                                                            <input type="text" class="form-control" id="id"  name="id" value="{{ $item->id }}" readonly>
+                                                          </div>
+                                                        <div class="mb-3">
+                                                          <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                                          <input type="text" class="form-control" id="nombre"  name="nombre" value="{{ $item->nombre }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                          <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                                                          <input type="text" class="form-control" id="apellido" name="apellido" value=" {{$item->apellido}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputPassword1" class="form-label">Email</label>
+                                                            <input type="text" class="form-control" id="email" name="email" value="{{ $item->email }}">
+                                                          </div>
+                                                          <div class="mb-3">
+                                                            <label for="exampleInputPassword1" class="form-label">Telefono</label>
+                                                            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $item->telefono }}">
+                                                          </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary" data-dismiss="modal"><i class="fa-solid fa-trash">Modificar</i></button>
+                                                          </div>
+                                                      </form>
+                                                </div> 
+                                              </div>
+                                              
+                                            </div>
+                                            
+                                          </div>
+                                    @endforeach
                                 </tbody>
                           </table>    
                           <tfoot>
@@ -85,55 +123,14 @@
                         </tfoot>
                         <div class="mx-auto my-3" style="width: 200px;">
                             <a href="{{route('registrarcliente')}}"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
-                                Registrar Cliente
+                                Registrar Nuevo Cliente
                             </i></button></a>
                         </div>
                         
                     </div>
                     
                 </div>
-                
-
                 <!-- Modelo para editar CLientes -->
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                  <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                  <input type="text" class="form-control" id="nombre"  name="nombreEdC">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="exampleInputPassword1" class="form-label">Apellido</label>
-                                  <input type="text" class="form-control" id="apellido" name="apellidoEdc">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="email" name="emailEdc">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Telefono</label>
-                                    <input type="text" class="form-control" id="telefono" name="telefonoEdc">
-                                  </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-trash">Salir</i></button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa-solid fa-trash">Modificar</i></button>
-                                  </div>
-                              </form>
-                        </div> 
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
             </div>
             
             <!-- Modelo para Añadir Clientes --> 

@@ -34,15 +34,22 @@ Route::get('/home',[ProductoController::class,'Tablaproductodisponible'])->name(
 
 Route::post('/registrar-producto',[ProductoController::class,'Crearproductos'])->name('registrar-producto');
 Route::post('/registrar-cliente',[ClientesController::class,'Crearclientes'])->name('registrar-cliente');
+
 //////////////////////////////////////////////// Rutas para validar registros y iniciar sesion
 
 Route::post('/validar-registro', [UsuariosController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [UsuariosController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [UsuariosController::class, 'logout'])->name('logout');
 
-/////////////////////////////////////////////// tabla clientes
+/////////////////////////////////////////////// Ruta Tabla clientes
 
 Route::get('/clientes',[ClientesController::class,'Tablacliente'])->name('clientes');
 //Route::post('/',[ProductoController::class,'Tablaproducto'])->name('productos');
 
-/////////////////////////////////////////////  
+/////////////////////////////////////////////  Ruta para Editar y Eliminar Productos
+Route::post('/editar-producto',[ProductoController::class,'Updateproducto'])->name('editar-producto');
+Route::get('/eliminar-producto-{id}',[ProductoController::class,'Deleteproducto'])->name('eliminar-producto');
+
+/////////////////////////////////////////// Ruta para Editar y Eliminar CLiente
+//Route::post('/editar-cliente',[ClientesController::class,'Updatecliente'])->name('editar-cliente');
+Route::get('/eliminar-cliente-{id}',[ClientesController::class,'Deletecliente'])->name('eliminar-cliente');

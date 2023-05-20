@@ -51,4 +51,36 @@ class ProductoController extends Controller
         return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
         
      }
+
+     public function Updateproducto(Request $request){
+       $producto = new Productos();
+        //$producto->id = $request->id;
+        $producto->nombre  = $request->nombre;
+        $producto->precio = $request->precio;
+        if($request->Disponibilidad == 'Disponible'){
+            $producto->Disponibilidad = 1;
+        }else{
+            $producto->Disponibilidad = 0;
+        }
+        //$producto->Disponibilidad = $request->cargoRp;  
+        $producto->save();
+        return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
+        
+        
+     }
+
+     public function Deleteproducto($id){
+        try {
+            $sql = DB::delete("DELETE from producto WHERE id = $id");
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if($sql == true){
+            return back()->with('mensaje','Registro eliminado con exito');
+        }else{
+            return back()->with('mensaje','Error al eliminar');
+        }
+       
+     }
+     
 }
