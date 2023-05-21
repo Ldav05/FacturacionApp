@@ -52,7 +52,7 @@ Route::post('/editar-producto',[ProductoController::class,'Updateproducto'])->na
 Route::get('/eliminar-producto-{id}',[ProductoController::class,'Deleteproducto'])->name('eliminar-producto');
 
 /////////////////////////////////////////// Ruta para Editar y Eliminar CLiente
-Route::post('/editar-cliente',[ClientesController::class,'Updatecliente'])->name('editar-cliente');
+Route::post('/editar-cliente',[ClientesController::class,'Updatecliente'])->name("editar-cliente");
 Route::get('/eliminar-cliente-{id}',[ClientesController::class,'Deletecliente'])->name('eliminar-cliente');
 
 ////////////////////////////////////////// Ruta para Registrar Ventas

@@ -53,7 +53,7 @@ class ProductoController extends Controller
      }
 
      public function Updateproducto(Request $request){
-       $producto = new Productos();
+       $producto =  Productos::find($request->id);
         //$producto->id = $request->id;
         $producto->nombre  = $request->nombre;
         $producto->precio = $request->precio;
@@ -64,7 +64,7 @@ class ProductoController extends Controller
         }
         //$producto->Disponibilidad = $request->cargoRp;  
         $producto->save();
-        return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
+        return redirect('homeadmin')->with('mensaje','¡Se actualizo correctamente el producto!');
         
         
      }
@@ -82,5 +82,6 @@ class ProductoController extends Controller
         }
        
      }
+     
      
 }

@@ -38,7 +38,7 @@ class ClientesController extends Controller
      }
 
      public function Updatecliente(Request $request){
-      $producto = new Clientes();
+      $producto = Clientes::find($request->id);
        //$producto->id = $request->id;
        $producto->nombre  = $request->nombre;
        $producto->apellido = $request->apellido;
@@ -46,8 +46,8 @@ class ClientesController extends Controller
        $producto->telefono = $request->telefono;
        
        //$producto->Disponibilidad = $request->cargoRp;  
-       $producto->save();
-       return back()->with('mensaje','¡Se agrego correctamente el producto!');
+       //$producto->save();
+       return redirect('clientes')->with('mensaje','¡Se agrego correctamente el producto!');
        
        
     }

@@ -55,7 +55,7 @@
                                         <tr scope="row">
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nombre }}</td>
-                                            <td>{{ $item->precio }}</td>
+                                            <td>$   {{ $item->precio }}</td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -104,30 +104,28 @@
                                         <div class="form-control">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="remember"> ¿Desea ingresar informacion personal?
+                                                    <input type="checkbox" id="habilitar" name="habilitar" {{ old("habilitar") ? 'checked' : '' }}> ¿Desea ingresar informacion personal?
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                       <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre"  name="nombre">
-                                      </div>
-                                      <div class="mb-3">
+                                        <input type="text" class="form-control" id="nombre"  name="nombre" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                      
                                         <label for="exampleInputPassword1" class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido">
-                                      </div>
-                                      <div class="mb-3">
+                                        <input type="text" class="form-control" id="apellido" name="apellido" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                      
                                           <label for="exampleInputPassword1" class="form-label">Email</label>
-                                          <input type="text" class="form-control" id="email" name="email">
-                                        </div>
-                                        <div class="mb-3">
+                                          <input type="text" class="form-control" id="email" name="email" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                        
                                           <label for="exampleInputPassword1" class="form-label">Telefono</label>
-                                          <input type="text" class="form-control" id="telefono" name="telefono">
+                                          <input type="text" class="form-control" id="telefono" name="telefono" {{ !old("habilitar") ? 'disabled' : '' }}>
                                         </div>
                                       <div class="my-1">
                                         <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Guardar</i></button>
                                       </div>  
+                                      
                               </form>
                         </div> 
                       </div>
