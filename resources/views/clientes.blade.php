@@ -80,7 +80,8 @@
                                                   </button>
                                                 </div>
                                                 <div class="modal-body" >
-                                                    <form method="post" action="{{route("editar-cliente")}}">
+                                                    <form method="POST" action="{{route('editar-cliente')}}">
+                                                        @csrf
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Id Cliente</label>
                                                             <input type="text" class="form-control" id="id"  name="id" value="{{ $item->id }}" readonly>

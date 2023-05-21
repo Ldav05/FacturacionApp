@@ -38,16 +38,16 @@ class ClientesController extends Controller
      }
 
      public function Updatecliente(Request $request){
-      $producto = Clientes::find($request->id);
+      $cliente = Clientes::find($request->id);
        //$producto->id = $request->id;
-       $producto->nombre  = $request->nombre;
-       $producto->apellido = $request->apellido;
-       $producto->email = $request->email;
-       $producto->telefono = $request->telefono;
+       $cliente->nombre  = $request->nombre;
+       $cliente->apellido = $request->apellido;
+       $cliente->email = $request->email;
+       $cliente->telefono = $request->telefono;
        
        //$producto->Disponibilidad = $request->cargoRp;  
-       //$producto->save();
-       return redirect('clientes')->with('mensaje','¡Se agrego correctamente el producto!');
+       $cliente->save();
+       return redirect('clientes')->with('mensaje','¡Se agrego correctamente el cliente!');
        
        
     }
