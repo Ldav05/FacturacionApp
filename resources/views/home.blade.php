@@ -61,6 +61,7 @@
                                         <tr>
                                             <td colspan="3">No hay datos disponibles.</td>
                                         </tr>
+                                        
                                     @endforelse
                                 </tbody>
                           </table>    
@@ -70,18 +71,74 @@
                                     {{$datos->links()}}
                                     @endif
                               </div>
+                              
                         </tfoot>
                           <div class="mx-auto my-3" style="width: 200px;">
-                            <a href=""><button type="submit" class="btn btn-primary"><i class="fa-solid fa-trash">
+                            <a><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><i class="fa-solid fa-trash">
                                 Generar Venta
                             </i></button></a>
                        
                         </div>
-                        </div>
-       
-                    </div>
-                
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="falses">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Generar Venta</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="{{route('registrar-venta')}}">
+                                @csrf
+                                    <div class="form-group">
+                                        <label for="Select1">Selecciona un Producto</label>
+                                        <select class="form-control" name="producto">
+                                            @foreach($datos as $item)
+                                            <option>{{$item->nombre}}</option>
+                                            @endforeach
+                                          </select>
+                                      </div>
+                                      <div class="form-group">
+                                        <div class="form-control">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember"> ¿Desea ingresar informacion personal?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                      <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre"  name="nombre">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                                        <input type="text" class="form-control" id="apellido" name="apellido">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="exampleInputPassword1" class="form-label">Email</label>
+                                          <input type="text" class="form-control" id="email" name="email">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="exampleInputPassword1" class="form-label">Telefono</label>
+                                          <input type="text" class="form-control" id="telefono" name="telefono">
+                                        </div>
+                                      <div class="my-1">
+                                        <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Guardar</i></button>
+                                      </div>  
+                              </form>
+                        </div> 
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+
+            </div>
+        
             </div>
         </div>
     </div>

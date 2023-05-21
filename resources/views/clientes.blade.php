@@ -79,8 +79,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                   </button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form method="POST" action="">
+                                                <div class="modal-body" >
+                                                    <form method="POST" action="{{route('editar-cliente')}}">
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Id Cliente</label>
                                                             <input type="text" class="form-control" id="id"  name="id" value="{{ $item->id }}" readonly>
@@ -101,7 +101,7 @@
                                                             <label for="exampleInputPassword1" class="form-label">Telefono</label>
                                                             <input type="text" class="form-control" id="telefono" name="telefono" value="{{ $item->telefono }}">
                                                           </div>
-                                                        <div class="modal-footer">
+                                                        <div class="mx-1">
                                                             <button type="submit" class="btn btn-primary" data-dismiss="modal"><i class="fa-solid fa-trash">Modificar</i></button>
                                                           </div>
                                                       </form>

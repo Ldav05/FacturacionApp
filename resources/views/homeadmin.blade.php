@@ -114,7 +114,7 @@
                                                     @endif
                                                     >
                                                   </div>
-                                                <div class="modal-footer">
+                                                <div class="mx-1">
                                                     <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Modificar</i></button>
                                                   </div>
                                               </form>

@@ -47,19 +47,19 @@
                             @csrf
                             <div class="mb-3">
                               <label  class="form-label">Nombre</label>
-                              <input type="text" class="form-control" id="nombre"  name="nombre">
+                              <input type="text" class="form-control" id="nombre"  name="nombre" required>
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Apellido</label>
-                              <input type="text" class="form-control" id="apellido" name="apellido">
+                              <input type="text" class="form-control" id="apellido" name="apellido" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <input type="text" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telefono</label>
-                                <input type="text" class="form-control" id="telefono" name="telefono">
+                                <input type="text" class="form-control" id="telefono" name="telefono" required>
                             </div>
                               <div class="">
                                 <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Registrar</i></button>

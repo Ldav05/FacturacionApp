@@ -48,11 +48,11 @@
                             @csrf
                             <div class="mb-3">
                               <label  class="form-label">Nombre</label>
-                              <input type="text" class="form-control" id="nombre"  name="nombre">
+                              <input type="text" class="form-control" id="nombre"  name="nombre" required>
                             </div>
                             <div class="mb-3">
                               <label class="form-label">Precio</label>
-                              <input type="text" class="form-control" id="precio" name="precio">
+                              <input type="text" class="form-control" id="precio" name="precio" required>
                             </div>
                             <div class="form-group">
                                 <label for="Select1">Seleciona la Disponibilidad</label>

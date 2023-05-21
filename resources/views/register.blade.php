@@ -63,21 +63,21 @@
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email" class="form-control" name="email">
+                                    <input type="text" id="email" class="form-control" name="email" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="pasword" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="pasword" class="form-control" name="pasword" >
+                                    <input type="password" id="pasword" class="form-control" name="pasword" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="cargo" class="col-md-4 col-form-label text-md-right">Cargo</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="cargo" class="form-control" name="cargo"  >
+                                    <input type="text" id="cargo" class="form-control" name="cargo" required >
                                 </div>
                             </div>
 
@@ -85,8 +85,9 @@
                                 <label for="cargo" class="col-md-4 col-form-label text-md-right">Rol</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="rolid">
-                                        <option value="1">Admin</option>
-                                        <option value="2">Trabajador</option>
+                                        <option >Seleciona un Rol</option>
+                                        <option >Admin</option>
+                                        <option >Trabajador</option>
                                       </select>
                                 </div>
                             </div>

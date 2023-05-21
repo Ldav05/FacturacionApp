@@ -47,7 +47,7 @@ class ClientesController extends Controller
        
        //$producto->Disponibilidad = $request->cargoRp;  
        $producto->save();
-       return redirect('homeadmin')->with('mensaje','¡Se agrego correctamente el producto!');
+       return back()->with('mensaje','¡Se agrego correctamente el producto!');
        
        
     }
