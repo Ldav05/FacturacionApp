@@ -39,10 +39,10 @@
                 <div class="card">
                     <div class="card-header">Productos Disponibles</div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-hover">
                             <caption></caption>
                             <thead>
-                                <thead>
+                                <thead class="thead-dark">
                                     <tr >
                                         <th>Id Producto</th>
                                         <th>Nombre</th>
@@ -101,30 +101,65 @@
                                           </select>
                                       </div>
                                       <div class="form-group">
+                                        <label for="Select1">Nombre Vendedor</label>
+                                        <select class="form-control" name="usuario">
+                                            @foreach($usuario as $item)
+                                            @if ($item->rolid == 2)
+                                            <option>{{$item->nombre}}</option>
+                                            @endif
+                                            @endforeach
+                                          </select>
+                                      </div>
+                                      <div class="form-group">
                                         <div class="form-control">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" id="habilitar" name="habilitar" {{ old("habilitar") ? 'checked' : '' }}> ¿Desea ingresar informacion personal?
+                                                    <input type="checkbox" id="habilitar" name="habilitar" > ¿Desea ingresar informacion personal?
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                       <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre"  name="nombre" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                        <input type="text" class="form-control" id="nombre"  name="nombre" >
                                       
                                         <label for="exampleInputPassword1" class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                        <input type="text" class="form-control" id="apellido" name="apellido">
                                       
                                           <label for="exampleInputPassword1" class="form-label">Email</label>
-                                          <input type="text" class="form-control" id="email" name="email" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                          <input type="text" class="form-control" id="email" name="email">
                                         
                                           <label for="exampleInputPassword1" class="form-label">Telefono</label>
-                                          <input type="text" class="form-control" id="telefono" name="telefono" {{ !old("habilitar") ? 'disabled' : '' }}>
+                                          <input type="text" class="form-control" id="telefono" name="telefono">
                                         </div>
                                       <div class="my-1">
                                         <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-trash">Guardar</i></button>
                                       </div>  
+
+                                      <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            const checkbox = document.getElementById('habilitar');
+                                            const input = document.getElementById('nombre');
+                                            const input2 = document.getElementById('apellido');
+                                            const input3 = document.getElementById('email');
+                                            const input4 = document.getElementById('telefono');
+                                            
+                                            checkbox.addEventListener('change', function() {
+                                                if (this.checked) {
+                                                    input.removeAttribute('disabled');
+                                                    input2.removeAttribute('disabled');
+                                                    input3.removeAttribute('disabled');
+                                                    input4.removeAttribute('disabled');
+                                                } else {
+                                                    input.setAttribute('disabled', 'disabled');
+                                                    input2.setAttribute('disabled', 'disabled');
+                                                    input3.setAttribute('disabled', 'disabled');
+                                                    input4.setAttribute('disabled', 'disabled');
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    
                                       
                               </form>
                         </div> 

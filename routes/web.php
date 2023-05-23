@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,4 +57,4 @@ Route::post('/editar-cliente',[ClientesController::class,'Updatecliente'])->name
 Route::get('/eliminar-cliente-{id}',[ClientesController::class,'Deletecliente'])->name('eliminar-cliente');
 
 ////////////////////////////////////////// Ruta para Registrar Ventas
-Route::post('/registrar-venta',[Controller::class,'Crearventa'])->name('registrar-venta');
+Route::post('/registrar-venta',[VentasController::class,'Crearventa'])->name('registrar-venta');

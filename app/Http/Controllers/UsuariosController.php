@@ -55,6 +55,8 @@ class UsuariosController extends Controller
         if($user ){
             if(password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 1)){
                 //$datos = Productos::paginate(5);
+                //$id = User::find($request->id);
+                //$factura = 0;
                 return redirect('homeadmin')->with('mensaje', '¡Inicio de sesión exitoso!');//->with('datos', $datos);
             }else{
                //return view('home');

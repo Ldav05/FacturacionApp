@@ -53,8 +53,8 @@
                 <div class="card">
                     <div class="card-header">Tabla de Productos</div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
                               <tr>
                                 <th scope="col">Id Producto</th>
                                 <th scope="col">Nombre</th>
@@ -106,7 +106,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Disponibilidad</label>
-                                                    <input type="text" class="form-control" id="Disponibilidad" name="Disponibilidad" 
+                                                    <input type="text" placeholder="Ingrese Disponible o No Disponible" class="form-control" id="Disponibilidad" name="Disponibilidad" 
                                                     @if($item->Disponibilidad == 1)
                                                     value="Disponible"
                                                     @else

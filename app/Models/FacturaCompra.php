@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FacturaCompra extends Model
 {
-    protected $table = 'producto';
-    protected $fillable = ['id','precio','nombre'];
+    protected $table = 'factura';
+    protected $fillable = ['id','idusuario','idcliente'];
 
 }

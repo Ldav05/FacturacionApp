@@ -42,9 +42,9 @@
                 <div class="card">
                     <div class="card-header">Tabla de Clientes</div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-hover">
                             <caption></caption>
-                            <thead>
+                            <thead class="thead-dark">
                                 <thead>
                                     <tr >
                                         <th>Id Cliente</th>

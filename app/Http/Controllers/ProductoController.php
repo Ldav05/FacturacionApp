@@ -33,7 +33,8 @@ class ProductoController extends Controller
 
      public function  Tablaproductodisponible(){
         $datos = Productos::where('Disponibilidad',1)->paginate(4);
-        return view('home')->with('datos', $datos);
+        $usuario = User::all();
+        return view('home')->with('datos', $datos)->with('usuario', $usuario);
      }
 
      public function Crearproductos(Request $request){
@@ -57,13 +58,20 @@ class ProductoController extends Controller
         //$producto->id = $request->id;
         $producto->nombre  = $request->nombre;
         $producto->precio = $request->precio;
-        if($request->Disponibilidad == 'Disponible'){
+        if($request->Disponibilidad == 'Disponible' or $request->Disponibilidad == 'disponible'){
             $producto->Disponibilidad = 1;
+            $producto->save();
         }else{
+           if($request->Disponibilidad == 'No Disponible' or $request->Disponibilidad == 'no disponible'){
             $producto->Disponibilidad = 0;
+            $producto->save();
+           }else{
+            return redirect('homeadmin')->with('mensaje','¡Ingreso incorrectamente informacion en el campo Disponibilidad!');
+           }
+           
         }
         //$producto->Disponibilidad = $request->cargoRp;  
-        $producto->save();
+        
         return redirect('homeadmin')->with('mensaje','¡Se actualizo correctamente el producto!');
         
         
