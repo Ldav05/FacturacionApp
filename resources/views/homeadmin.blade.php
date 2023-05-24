@@ -20,6 +20,7 @@
     <title>FacturaNet Admin</title>
 </head>
 <body>
+
     @if(session('mensaje'))
     <script>
         setTimeout(function() {

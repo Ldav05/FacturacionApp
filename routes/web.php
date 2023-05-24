@@ -45,9 +45,9 @@ Route::post('/inicia-sesion', [UsuariosController::class, 'login'])->name('inici
 //////////////////////////////////////////////// Ruta para cerrar sesion
 
 Route::get('/logout',function(){
- Session::forget('user');
- return redirect('login');
-});
+    Session::forget('user');
+    return redirect('login');
+   });
 
 /////////////////////////////////////////////// Ruta Tabla clientes
 

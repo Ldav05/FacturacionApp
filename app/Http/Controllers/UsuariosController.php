@@ -33,7 +33,7 @@ class UsuariosController extends Controller
         
         $user->save();
         
-        Auth::login($user);
+        //Auth::login($user);
         //echo "<script>alert('Registro enviado exitosamente');</script>";
         return redirect(route('login'))->with('mensaje', '¡Registro Exitoso!');
            
@@ -46,15 +46,14 @@ class UsuariosController extends Controller
 
          $credentials = $request->only('email', 'pasword','rolid');
          $user = User::where('email',$credentials['email'])->first();  
-         $users = session('user');
             if(!$user || (!password_verify($credentials['pasword'], $user->pasword))){
                 return redirect('login')->with('mensaje', '¡Error de credenciales!');
             }else if ((password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 1))){
                 $request->session()->put('user',$user);
                 return redirect('homeadmin')->with('mensaje', '¡Inicio de sesión exitoso!');
             }else if((password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 2))){
-                $request->session()->put('users',$users);
-                return redirect('home')->with('mensaje', '¡Inicio de sesión exitoso!');
+                $request->session()->put('users',$user);
+                return redirect()->route('home')->with('mensaje', '¡Inicio de sesión exitoso!');;
             }
       
     }

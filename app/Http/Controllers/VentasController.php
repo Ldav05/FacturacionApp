@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FacturaCompra;
 use App\Models\User;
 use App\Models\Clientes;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,11 @@ class VentasController extends Controller
         //$idclientes = Clientes::all();
         $usuario = User::where('nombre', $request->usuario)->first();
         if($usuario){
-            $fecha = date('Y-m-d H:i:s'); // Obtener la fecha actual
+             
+            
+            /*$fecha = date('Y-m-d H:i:s'); // Obtener la fecha actual
             $venta->fecha = $fecha;
-            $venta->idusuario = $usuario->id;
+            $venta->idusuario = $userId;
             $venta->save();
 
 
@@ -45,7 +48,7 @@ class VentasController extends Controller
                 //return back()->with('mensaje', '¡Venta generada exitosamente!');
             }else{
                 return back()->with('mensaje', '¡Venta generada exitosamente!');
-            }
+            }*/
             
         }
         

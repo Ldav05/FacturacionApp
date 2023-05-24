@@ -114,16 +114,15 @@
                                             @endforeach
                                           </select>
                                       </div>
-                                      <div class="form-group">
-                                        <label for="Select1">Nombre Vendedor</label>
-                                        <select class="form-control" name="usuario">
-                                            @foreach($usuario as $item)
-                                            @if ($item->rolid == 2)
-                                            <option>{{$item->nombre}}</option>
-                                            @endif
-                                            @endforeach
-                                          </select>
-                                      </div>
+                                      
+                                      <div id="hidden-template">
+                                        @if (session('dato'))
+                                        
+                                        <p>Nombre: {{ session('dato')['id']}}</p>
+                                        
+                                        @endif
+
+                                    </div>
                                       <div class="form-group">
                                         <div class="form-control">
                                             <div class="checkbox">
