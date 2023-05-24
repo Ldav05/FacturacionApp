@@ -12,7 +12,16 @@
 </head>
 <body>
     @if(session('mensaje'))
-    <div class="alert alert-success">
+    <script>
+        setTimeout(function() {
+            document.getElementById('alerta').style.display = 'none';
+        }, 3000); 
+        
+        window.onload = function() {
+            document.getElementById('alerta').style.display = 'block';
+        };
+    </script>
+    <div id="alerta" class="alert alert-success">
         {{ session('mensaje') }}
     </div>
     @endif
@@ -29,7 +38,7 @@
                         <a class="nav-link" href="{{route('homeadmin')}}">Ir a Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('login')}}">Cerrar Sesion</a>
+                        <a class="nav-link" href="/logout" onclick='return confirm ("¿Estas seguro de cerrar sesion?")' >Cerrar Sesion</a>
                     </li>
                 </ul>
     

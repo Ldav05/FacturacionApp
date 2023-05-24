@@ -59,9 +59,9 @@ class ClientesController extends Controller
            $sql = 0;
        }
        if($sql == true){
-           return back()->with('mensaje','Registro eliminado con exito');
+           return redirect('clientes')->with('mensaje','Registro eliminado con exito');
        }else{
-           return back()->with('mensaje','Error al eliminar');
+           return redirect('clientes')->with('mensaje','Error al eliminar');
        }
       
     }

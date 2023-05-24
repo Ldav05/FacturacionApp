@@ -84,9 +84,9 @@ class ProductoController extends Controller
             $sql = 0;
         }
         if($sql == true){
-            return back()->with('mensaje','Registro eliminado con exito');
+            return redirect('homeadmin')->with('mensaje','Registro eliminado con exito');
         }else{
-            return back()->with('mensaje','Error al eliminar');
+            return redirect('homeadmin')->with('mensaje','Error al eliminar');
         }
        
      }

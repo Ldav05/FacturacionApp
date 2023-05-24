@@ -41,7 +41,13 @@ Route::post('/registrar-cliente',[ClientesController::class,'Crearclientes'])->n
 
 Route::post('/validar-registro', [UsuariosController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [UsuariosController::class, 'login'])->name('inicia-sesion');
-Route::get('/logout', [UsuariosController::class, 'logout'])->name('logout');
+
+//////////////////////////////////////////////// Ruta para cerrar sesion
+
+Route::get('/logout',function(){
+ Session::forget('user');
+ return redirect('login');
+});
 
 /////////////////////////////////////////////// Ruta Tabla clientes
 

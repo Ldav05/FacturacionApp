@@ -11,11 +11,25 @@
     <title>Inicio</title>
 </head>
 <body>
-    @if(session('mensaje'))
-    <div class="alert alert-success">
+   
+    
+        @if(session('mensaje'))
+    <script>
+        setTimeout(function() {
+            document.getElementById('alerta').style.display = 'none';
+        }, 3000); 
+        
+        window.onload = function() {
+            document.getElementById('alerta').style.display = 'block';
+        };
+    </script>
+    <div id="alerta" class="alert alert-success">
         {{ session('mensaje') }}
     </div>
     @endif
+    
+    
+    
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand">FacturaNet</a>
@@ -26,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Cerrar Sesion</a>
+                            <a class="nav-link" href="/logout" onclick='return confirm ("¿Estas seguro de cerrar sesion?")'>Cerrar Sesion</a>
                         </li>
                 </ul>
     

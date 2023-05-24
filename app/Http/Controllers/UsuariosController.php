@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Permiso;
 use App\Models\Productos;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 //use App\Models\usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,51 +43,25 @@ class UsuariosController extends Controller
     }
 
     public function login(Request $request){
+
          $credentials = $request->only('email', 'pasword','rolid');
          $user = User::where('email',$credentials['email'])->first();  
-         //$password = User::where('pasword',$credentials['pasword'])->first(); 
-        //$remember = ($request->has('remeber') ? true : false);
-       // echo '<pre>';
-       // print_r($credentials);
-       // echo password_hash($credentials['pasword'], PASSWORD_DEFAULT);
-        //echo password_verify($credentials['pasword'], $user->pasword);
-        //echo '</pre>';
-        //return ($user);
-        if($user ){
-            if(password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 1)){
-                //$datos = Productos::paginate(5);
-                //$id = User::find($request->id);
-                //$factura = 0;
-                return redirect('homeadmin')->with('mensaje', '¡Inicio de sesión exitoso!');//->with('datos', $datos);
-            }else{
-               //return view('home');
-              //$datos = Productos::where('Disponibilidad',1)->paginate(5);
-                return redirect()->route('home')->with('mensaje', '¡Inicio de sesión exitoso!');
-              
+         $users = session('user');
+            if(!$user || (!password_verify($credentials['pasword'], $user->pasword))){
+                return redirect('login')->with('mensaje', '¡Error de credenciales!');
+            }else if ((password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 1))){
+                $request->session()->put('user',$user);
+                return redirect('homeadmin')->with('mensaje', '¡Inicio de sesión exitoso!');
+            }else if((password_verify($credentials['pasword'], $user->pasword) & ($user->rolid == 2))){
+                $request->session()->put('users',$users);
+                return redirect('home')->with('mensaje', '¡Inicio de sesión exitoso!');
             }
-        }else{
-            return redirect('login')->with('mensaje', '¡Contraseña o Correo incorrecto!');;
-        }
-        /*  
-        if(){
-            $request->session()->regenerate();
-            
-            return "entro a aqui 0";//redirect('inicio');
-        }else{  
-            return  $credentials;//redirect('login');
-        }
-*/
+      
     }
 
     
 
-    public function logout(Request $request){
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect(route('login'));
-    }
+    
 
     
     
